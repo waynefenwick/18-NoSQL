@@ -1,0 +1,21 @@
+{
+  "name": "18-NoSQL-Challenge",
+  "version": "1.0.1",
+  "description": "Mongoose back-end project - Develop",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "seed": "node utils/seed",
+    "heroku-postbuild": "node utils/seed.js",
+    "initialize": "npm -s i && npm run -s seed && npm -s start"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^7.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
