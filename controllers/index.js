@@ -1,5 +1,4 @@
-const router = require('express').Router();
 const { createUser } = require('./userController');
+const { createThought, getThought, updateThought, deleteThought } = require('./thoughtsController');
 
-
-module.exports = { createUser };
+module.exports = { createUser, createThought, getThought, updateThought, deleteThought };
