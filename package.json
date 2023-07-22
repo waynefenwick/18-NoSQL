@@ -2,7 +2,7 @@
   "name": "18-NoSQL-Challenge",
   "version": "1.0.1",
   "description": "Mongoose back-end project - Develop",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "scripts": {
     "start": "node index",
