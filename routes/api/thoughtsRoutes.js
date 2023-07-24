@@ -9,22 +9,31 @@ const {
   removeFriend,
   createReaction,
   removeReaction
-} = require('../../controllers/thoughtsController.js');
+} = require('../../controllers/thoughtsController');
 
 // /api/thoughts
-router.route('/').get(getAllThoughts).post(createThought);
+router.route('/')
+.get(getAllThoughts)
+.post(createThought);
 
 // /api/thoughts/:id
-router.route('/:id').get(getSingleThought).put(updateThought).delete(deleteThought);
+router.route('/:id')
+.get(getSingleThought)
+.put(updateThought)
+.delete(deleteThought);
 
 // /api/thoughts/:userId/friends/:friendId
-router.route('/:userId/friends/:friendId').post(addFriend).delete(removeFriend);
+router.route('/:userId/friends/:friendId')
+.post(addFriend)
+.delete(removeFriend);
 
 // /api/thoughts/:thoughtId/reactions
-router.route('/:thoughtId/reactions').post(createReaction);
+router.route('/:thoughtId/reactions')
+.post(createReaction);
 
 // /api/thoughts/:thoughtId/reactions/:reactionId
-router.route('/:thoughtId/reactions/:reactionId').delete(removeReaction);
+router.route('/:thoughtId/reactions/:reactionId')
+.delete(removeReaction);
 
 module.exports = router;
 

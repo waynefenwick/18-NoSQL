@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./config/connection');
+const connectToDatabase = require('./config/connection'); // Use the correct function name
 const routes = require('./routes');
 
 const PORT = process.env.PORT || 3001;
@@ -9,8 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
 
-db.once('open', () => {
-  app.listen(PORT, () => {
-    console.log(`Listening on http://localhost:${PORT}`);
+connectToDatabase() // Call the function to connect to the database
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Listening on http://localhost:${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('Database connection error:', err);
   });
-});
