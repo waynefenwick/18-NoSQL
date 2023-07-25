@@ -5,10 +5,10 @@ const {
   createThought,
   updateThought,
   deleteThought,
-  addFriend,
-  removeFriend,
   createReaction,
-  removeReaction
+  removeReaction,
+  addFriend,
+  removeFriend
 } = require('../../controllers/thoughtsController');
 
 // /api/thoughts
