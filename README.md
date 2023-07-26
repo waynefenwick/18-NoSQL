@@ -64,7 +64,7 @@ _A brief overview of the Insomnia build_
 &nbsp;
 
 
-![Media](./media/media_screenshot.png)
+![Media](./media/media.png)
 
 * Visit [Full Media](https://drive.google.com/file/d/1DkHJtfiQkxQ5bsglmH0z2loxhrPzHSFu/view?usp=sharing) to see more details
 
