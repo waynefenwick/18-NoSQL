@@ -62,13 +62,13 @@ See the video
 
 
 ## Media
-_A brief overview of the Insomnia build_
+_A snapshot of the Insomnia build_
 &nbsp;
 
 
-![Media](./media/media.png)
+![Media](./media/media2.png)
 
-* Visit [Full Media](https://drive.google.com/file/d/1DkHJtfiQkxQ5bsglmH0z2loxhrPzHSFu/view?usp=sharing) to see more details
+* Visit [Full Media](https://drive.google.com/file/d/1DkHJtfiQkxQ5bsglmH0z2loxhrPzHSFu/view?usp=sharing) to see an entire video showing functionality.
 
 
 &nbsp;
