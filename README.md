@@ -68,7 +68,7 @@ _A snapshot of the Insomnia build_
 
 ![Media](./media/media.png)
 
-* Visit [Full Media](https://drive.google.com/file/d/1DkHJtfiQkxQ5bsglmH0z2loxhrPzHSFu/view?usp=drive_link) to see an entire video showing functionality.
+* Visit [Full Media](https://drive.google.com/file/d/12GoDIHcZrbr9Fy0ikigSq_AP5k_3BzXu/view?usp=drive_link) to see an entire video showing functionality.
 
 
 &nbsp;
