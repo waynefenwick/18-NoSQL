@@ -102,8 +102,8 @@ const userController = {
   async removeFriend(req, res) {
     try {
       const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        { $pull: { friends: req.body.friendId } },
+        req.params.userId, // Use "userId" from the route
+        { $pull: { friends: req.params.friendId } }, // Use "friendId" from the route
         { new: true }
       );
       if (!updatedUser) {
@@ -115,5 +115,6 @@ const userController = {
     }
   },
 };
+  
 
 module.exports = userController;

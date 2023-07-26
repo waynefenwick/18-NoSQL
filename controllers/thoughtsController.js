@@ -16,20 +16,21 @@ const thoughtsController = {
       }
     },
 
-  // Delete a thought by its _id
-  async deleteThought(req, res) {
-    try {
-      const deletedThought = await Thoughts.findByIdAndDelete(req.params.id);
-  
-      if (!deletedThought) {
-        return res.status(404).json({ message: 'Thought not found' });
+    async deleteThought(req, res) {
+      try {
+        const deletedThought = await Thoughts.findByIdAndDelete(req.params.id);
+    
+        if (!deletedThought) {
+          return res.status(404).json({ message: 'Thought not found' });
+        }
+    
+        res.json({ message: 'Thought deleted successfully' });
+      } catch (err) {
+        console.error('Error deleting thought:', err);
+        res.status(500).json(err);
       }
-  
-      res.json({ message: 'Thought deleted successfully' });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  },
+    },
+    
 
   // Get all thoughts
   async getAllThoughts(req, res) {
