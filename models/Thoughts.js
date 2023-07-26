@@ -1,11 +1,11 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 // Reaction subdocument schema (as defined earlier)
 const reactionSchema = new Schema(
   {
     reactionId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Schema.Types.ObjectId(),
+      type: Types.ObjectId, // Use Mongoose.Types.ObjectId instead of Mongoose.Schema.ObjectId
+      default: () => new Types.ObjectId(), // Use Mongoose.Types.ObjectId instead of Mongoose.Schema.ObjectId
     },
     reactionBody: {
       type: String,
@@ -46,9 +46,7 @@ const thoughtSchema = new Schema(
       type: String,
       required: true,
     },
-    reactions: [
-      reactionSchema, // Add the reactionSchema as the subdocument schema
-    ],
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
@@ -58,12 +56,13 @@ const thoughtSchema = new Schema(
   }
 );
 
-thoughtSchema.virtual('reactionCount').get(function() {
+thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
 const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;
+
 
 

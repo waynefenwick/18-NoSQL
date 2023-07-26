@@ -30,7 +30,7 @@ const thoughtsController = {
       res.status(500).json(err);
     }
   },
-  
+
   // Get all thoughts
   async getAllThoughts(req, res) {
     try {
@@ -123,70 +123,6 @@ const thoughtsController = {
         const updatedThought = await thought.save();
   
         res.json(updatedThought);
-      } catch (err) {
-        res.status(500).json(err);
-      }
-    },
-  
-    // Add a friend to a user's friends array
-    async addFriend(req, res) {
-      try {
-        const { userId } = req.params;
-        const { friendId } = req.body;
-  
-        // Find the user and the friend by their _id
-        const [user, friend] = await Promise.all([
-          User.findById(userId),
-          User.findById(friendId),
-        ]);
-  
-        if (!user || !friend) {
-          return res
-            .status(404)
-            .json({ message: 'User or friend with this id not found!' });
-        }
-  
-        // Add the friend to the user's friends array (avoid duplicates)
-        if (!user.friends.includes(friend._id)) {
-          user.friends.push(friend._id);
-        }
-  
-        // Save the updated user with the new friend
-        const updatedUser = await user.save();
-  
-        res.json(updatedUser);
-      } catch (err) {
-        res.status(500).json(err);
-      }
-    },
-  
-    // Remove a friend from a user's friends array by friendId
-    async removeFriend(req, res) {
-      try {
-        const { userId } = req.params;
-        const { friendId } = req.body;
-  
-        // Find the user and the friend by their _id
-        const [user, friend] = await Promise.all([
-          User.findById(userId),
-          User.findById(friendId),
-        ]);
-  
-        if (!user || !friend) {
-          return res
-            .status(404)
-            .json({ message: 'User or friend with this id not found!' });
-        }
-  
-        // Filter out the friend to be removed from the friends array
-        user.friends = user.friends.filter(
-          (friendId) => friendId.toString() !== friend._id.toString()
-        );
-  
-        // Save the updated user after removing the friend
-        const updatedUser = await user.save();
-  
-        res.json(updatedUser);
       } catch (err) {
         res.status(500).json(err);
       }

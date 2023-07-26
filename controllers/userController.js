@@ -76,15 +76,24 @@ const userController = {
   async addFriend(req, res) {
     try {
       const { friendId } = req.body;
-      const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        { $addToSet: { friends: friendId } },
-        { new: true }
-      );
-      if (!updatedUser) {
+      
+      // Check if the user with the given userId exists
+      const user = await User.findById(req.params.userId);
+      if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
-      res.json(updatedUser);
+  
+      // Check if the friend with the given friendId exists
+      const friend = await User.findById(friendId);
+      if (!friend) {
+        return res.status(404).json({ message: 'Friend not found' });
+      }
+  
+      // Add the friend to the user's friends list
+      user.friends.push(friendId);
+      await user.save();
+  
+      res.json(user);
     } catch (err) {
       res.status(500).json(err);
     }
