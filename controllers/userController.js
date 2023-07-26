@@ -1,6 +1,7 @@
 const { User, Thoughts } = require('../models');
 
 const userController = {
+  // Create a user
   async createUser({ body }, res) {
     try {
       const data = await User.create(body);
@@ -10,36 +11,31 @@ const userController = {
     }
   },
   
-  deleteUser(req, res) {
-    User.findById(req.params.id)
-      .then(user => {
-        if (!user) {
-          console.log('User not found.');
-          return res.status(404).json({ message: 'User not found' });
-        }
-
-        // Delete the user's associated thoughts
-        Thoughts.deleteMany({ username: user.username })
-          .then(() => {
-            // Now, delete the user
-            return User.deleteOne({ _id: user._id });
-          })
-          .then(() => {
-            console.log('User deleted successfully.');
-            res.json({ message: 'User deleted successfully' });
-          })
-          .catch(err => {
-            console.error('Error deleting user:', err);
-            res.status(500).json(err);
-          });
-      })
-      .catch(err => {
-        console.error('Error finding user:', err);
-        res.status(500).json(err);
-      });
+  // Delete a user
+  async deleteUser(req, res) {
+    try {
+      const user = await User.findById(req.params.id);
+      
+      if (!user) {
+        console.log('User not found.');
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Delete the user's associated thoughts
+      await Thoughts.deleteMany({ username: user.username });
+  
+      // Now, delete the user
+      await User.deleteOne({ _id: user._id });
+  
+      console.log('User deleted successfully.');
+      res.json({ message: 'User deleted successfully' });
+    } catch (err) {
+      console.error('Error deleting user:', err);
+      res.status(500).json(err);
+    }
   },
   
-
+  // Get all users
   async getAllUsers(req, res) {
     try {
       const users = await User.find({});
@@ -49,6 +45,7 @@ const userController = {
     }
   },
 
+  // Get a single user
   async getSingleUser(req, res) {
     try {
       const user = await User.findById(req.params.id);
@@ -61,6 +58,7 @@ const userController = {
     }
   },
 
+  // Update a user
   async updateUser(req, res) {
     try {
       const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -73,6 +71,7 @@ const userController = {
     }
   },
 
+  // Add a friend
   async addFriend(req, res) {
     try {
       const { friendId } = req.body;
@@ -99,6 +98,7 @@ const userController = {
     }
   },
 
+  // Delete a friend
   async removeFriend(req, res) {
     try {
       const updatedUser = await User.findByIdAndUpdate(
@@ -115,6 +115,5 @@ const userController = {
     }
   },
 };
-  
 
 module.exports = userController;

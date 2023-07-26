@@ -1,5 +1,5 @@
 const express = require('express');
-const connectToDatabase = require('./config/connection'); // Use the correct function name
+const connectToDatabase = require('./config/connection');
 const routes = require('./routes');
 
 const PORT = process.env.PORT || 3001;
@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
 
-connectToDatabase() // Call the function to connect to the database
+connectToDatabase()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Listening on http://localhost:${PORT}`);

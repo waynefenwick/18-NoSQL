@@ -5,7 +5,7 @@ const reactionSchema = new Schema(
   {
     reactionId: {
       type: Types.ObjectId, // Use Mongoose.Types.ObjectId instead of Mongoose.Schema.ObjectId
-      default: () => new Types.ObjectId(), // Use Mongoose.Types.ObjectId instead of Mongoose.Schema.ObjectId
+      default: () => new Types.ObjectId(),
     },
     reactionBody: {
       type: String,

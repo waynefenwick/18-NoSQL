@@ -1,4 +1,22 @@
-const { createUser } = require('./userController');
-const { createThought, getThought, updateThought, deleteThought } = require('./thoughtsController');
+const { createUser, deleteUser, getAllUsers, getSingleUser, updateUser, addFriend, removeFriend } = require('./userController');
+const { createThought, deleteThought, getAllThoughts, getSingleThought, updateThought, createReaction, removeReaction } = require('./thoughtsController');
 
-module.exports = { createUser, createThought, getThought, updateThought, deleteThought };
+module.exports = {
+  // User controller functions
+     createUser,
+     deleteUser,
+     getAllUsers,
+     getSingleUser,
+     updateUser,
+     addFriend,
+     removeFriend,
+
+  // Thoughts controller functions
+     createThought,
+     deleteThought,
+     getAllThoughts,
+     getSingleThought,
+     updateThought,
+     createReaction,
+     removeReaction
+};
