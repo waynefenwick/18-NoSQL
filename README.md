@@ -38,8 +38,8 @@ There are several steps involved. The most important are to make sure you establ
      * mongoose: 7.0.2
 5. Open package.json and enter "initialize": "npm -s i && npm run -s seed && npm -s start" as a script.
      * This will run 3 separate functions, one after the other in order to install dependencies, seed the database as well as open the port on your PC and start the server.
-5. Open the MongoDB App and select the connect button.
-6. Open a terminal on the server.js file and type in 'npm run initialize' on the command line.
+6. Open the MongoDB App and select the connect button.
+7. Open a terminal on the server.js file and type in 'npm run initialize' on the command line.
 8. You will now be ready to use [Insomnia](https://insomnia.rest/download) to test API routes you have created.
 9. There is a video link below to give you an overview how Insomnia works in testing API routes.
 
